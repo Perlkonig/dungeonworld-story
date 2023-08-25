@@ -1,0 +1,360 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$id": "https://www.perlkonig.com/dungeonworld/story/1-0-0.json#",
+    "title": "Dungeon World Story",
+    "description": "Structure of a Dungeon World story archive",
+    "definitions": {
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "monster": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": ["monster"]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "damage": {
+                    "type": "string"
+                },
+                "hp": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "armor": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "default": 0
+                },
+                "instincts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "moves": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": ["type", "name", "tags"],
+            "additionalProperties": false
+        },
+        "treasure": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": ["treasure"]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "value": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "moves": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": ["type", "name", "tags"],
+            "additionalProperties": false
+        },
+        "encounter": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": ["encounter"]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "moves": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": ["type", "name", "tags"],
+            "additionalProperties": false
+        },
+        "site": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": ["site"]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "moves": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            { "$ref": "#/definitions/encounter" },
+                            { "$ref": "#/definitions/treasure" },
+                            { "$ref": "#/definitions/monster" }
+                        ]
+                    }
+                }
+            },
+            "required": ["type", "name", "tags"],
+            "additionalProperties": false
+        },
+        "steading": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": ["steading"]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "prosperity": {
+                    "type": "string"
+                },
+                "population": {
+                    "type": "string"
+                },
+                "defenses": {
+                    "type": "string"
+                },
+                "moves": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            { "$ref": "#/definitions/site" },
+                            { "$ref": "#/definitions/encounter" }
+                        ]
+                    }
+                }
+            },
+            "required": ["type", "name", "tags"],
+            "additionalProperties": false
+        },
+        "area": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": ["area"]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "moves": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            { "$ref": "#/definitions/steading" },
+                            { "$ref": "#/definitions/site" },
+                            { "$ref": "#/definitions/encounter" },
+                            { "$ref": "#/definitions/treasure" },
+                            { "$ref": "#/definitions/monster" }
+                        ]
+                    }
+                }
+            },
+            "required": ["type", "name", "tags"],
+            "additionalProperties": false
+        },
+        "region": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": ["region"]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "moves": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            { "$ref": "#/definitions/area" },
+                            { "$ref": "#/definitions/steading" },
+                            { "$ref": "#/definitions/site" },
+                            { "$ref": "#/definitions/encounter" },
+                            { "$ref": "#/definitions/treasure" },
+                            { "$ref": "#/definitions/monster" }
+                        ]
+                    }
+                }
+            },
+            "required": ["type", "name", "tags"],
+            "additionalProperties": false
+        },
+        "almanac": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/region"
+            }
+        },
+        "chapter": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": ["text"],
+            "additionalProperties": false
+        },
+        "player": {
+            "type": "object",
+            "properties": {
+                "player": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "class": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "story": {
+                    "type": "string"
+                }
+            },
+            "required": ["player", "name", "class", "level"],
+            "additionalProperties": false
+        },
+        "npc": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "tags"],
+            "additionalProperties": false
+        }
+    },
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "minLength": 5
+        },
+        "people": {
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/definitions/player"
+                    },
+                    {
+                        "$ref": "#/definitions/npc"
+                    }
+                ]
+            }
+        },
+        "story": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/chapter"
+            }
+        },
+        "almanac": {
+            "$ref": "#/definitions/almanac"
+        }
+    },
+    "required": ["name", "people"],
+    "additionalProperties": false
+}
