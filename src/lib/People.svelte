@@ -4,25 +4,23 @@
     import NpcElement from "./People/NPC.svelte";
     import Card from "./Card.svelte";
 
-    export let people: (Player|Npc)[] = [];
-    const players = people.filter(p => "player" in p).sort((a, b) => a.name.localeCompare(b.name)) as Player[];
-    const npcs = people.filter(p => !("player" in p)).sort((a, b) => a.name.localeCompare(b.name)) as Npc[];
+    export let people: (Player | Npc)[] = [];
+    const players = people
+        .filter((p) => "player" in p)
+        .sort((a, b) => a.name.localeCompare(b.name)) as Player[];
+    const npcs = people
+        .filter((p) => !("player" in p))
+        .sort((a, b) => a.name.localeCompare(b.name)) as Npc[];
 </script>
 
-<Card
-    icon="fa fa-users"
-    title="Players"
->
+<Card icon="fa fa-users" title="Players">
     {#each players as player}
-        <PlayerElement player={player} />
+        <PlayerElement player="{player}" />
     {/each}
 </Card>
 
-<Card
-    icon="fa fa-users"
-    title="NPCs"
->
+<Card icon="fa fa-users" title="NPCs">
     {#each npcs as npc}
-        <NpcElement npc={npc} />
+        <NpcElement npc="{npc}" />
     {/each}
 </Card>

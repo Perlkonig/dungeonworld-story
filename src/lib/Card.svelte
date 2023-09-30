@@ -7,7 +7,8 @@
 <div class="card">
     <header class="card-header" on:click="{() => (expanded = !expanded)}">
         <p class="card-header-title">
-            <span class="icon"><i class="{icon}" aria-hidden="true"></i></span>&nbsp;{@html title}
+            <span class="icon"><i class="{icon}" aria-hidden="true"></i></span
+            >&nbsp;{@html title}
         </p>
         <button class="card-header-icon" aria-label="more options">
             <span class="icon">
@@ -21,8 +22,7 @@
     </header>
     {#if expanded}
         <div class="card-content">
-            <slot></slot>
+            <slot />
         </div>
     {/if}
 </div>
-

@@ -9,9 +9,11 @@
 
 <Card
     icon="fa fa-book"
-    title={`Chapter ${index}${chapter.name !== undefined ? `&nbsp;&middot;&nbsp;${chapter.name}` : ""}`}
+    title="{`Chapter ${index}${
+        chapter.name !== undefined ? `&nbsp;&middot;&nbsp;${chapter.name}` : ''
+    }`}"
 >
     <div class="content">
-        <SvelteMarkdown source={chapter.text} />
+        <SvelteMarkdown source="{chapter.text}" />
     </div>
 </Card>

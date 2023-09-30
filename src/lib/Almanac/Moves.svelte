@@ -5,9 +5,9 @@
 </script>
 
 <ul>
-{#each moves as move}
-    <li>
-        <div class="content"><SvelteMarkdown source={move} /></div>
-    </li>
-{/each}
+    {#each moves as move}
+        <li>
+            <div class="content"><SvelteMarkdown source="{move}" /></div>
+        </li>
+    {/each}
 </ul>

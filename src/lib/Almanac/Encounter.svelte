@@ -7,22 +7,19 @@
     export let encounter: Encounter;
 </script>
 
-<Card
-    icon="fa fa-users"
-    title={`Encounter &middot; ${encounter.name}`}
->
+<Card icon="fa fa-users" title="{`Encounter &middot; ${encounter.name}`}">
     <div class="content">
         <p>
-        {#each encounter.tags as tag}
-            <span class="tag">{tag}</span>&ensp;
-        {/each}
+            {#each encounter.tags as tag}
+                <span class="tag">{tag}</span>&ensp;
+            {/each}
         </p>
-    {#if encounter.description !== undefined}
-        <SvelteMarkdown source={encounter.description} />
-    {/if}
-    {#if encounter.moves !== undefined}
-        <h4>Moves</h4>
-        <Moves moves={encounter.moves} />
-    {/if}
+        {#if encounter.description !== undefined}
+            <SvelteMarkdown source="{encounter.description}" />
+        {/if}
+        {#if encounter.moves !== undefined}
+            <h4>Moves</h4>
+            <Moves moves="{encounter.moves}" />
+        {/if}
     </div>
 </Card>

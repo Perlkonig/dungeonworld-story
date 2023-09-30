@@ -7,5 +7,5 @@
 </script>
 
 {#each reversed as chapter, i}
-    <ChapterElement chapter={chapter} index={reversed.length - i} />
+    <ChapterElement chapter="{chapter}" index="{reversed.length - i}" />
 {/each}

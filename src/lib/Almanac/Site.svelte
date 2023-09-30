@@ -25,37 +25,34 @@
     }
 </script>
 
-<Card
-    icon="fa fa-map-marker"
-    title={`Site &middot; ${site.name}`}
->
+<Card icon="fa fa-map-marker" title="{`Site &middot; ${site.name}`}">
     <div class="content">
         <p>
-        {#each site.tags as tag}
-            <span class="tag">{tag}</span>&ensp;
-        {/each}
+            {#each site.tags as tag}
+                <span class="tag">{tag}</span>&ensp;
+            {/each}
         </p>
-    {#if site.description !== undefined}
-        <SvelteMarkdown source={site.description} />
-    {/if}
-    {#if site.moves !== undefined}
-        <h4>Moves</h4>
-        <Moves moves={site.moves} />
-    {/if}
+        {#if site.description !== undefined}
+            <SvelteMarkdown source="{site.description}" />
+        {/if}
+        {#if site.moves !== undefined}
+            <h4>Moves</h4>
+            <Moves moves="{site.moves}" />
+        {/if}
     </div>
     {#if encounters.length > 0}
-    {#each encounters as encounter}
-        <EncounterElement encounter={encounter} />
-    {/each}
-{/if}
-{#if treasures.length > 0}
-    {#each treasures as treasure}
-        <TreasureElement treasure={treasure} />
-    {/each}
-{/if}
-{#if monsters.length > 0}
-    {#each monsters as monster}
-        <MonsterElement monster={monster} />
-    {/each}
-{/if}
+        {#each encounters as encounter}
+            <EncounterElement encounter="{encounter}" />
+        {/each}
+    {/if}
+    {#if treasures.length > 0}
+        {#each treasures as treasure}
+            <TreasureElement treasure="{treasure}" />
+        {/each}
+    {/if}
+    {#if monsters.length > 0}
+        {#each monsters as monster}
+            <MonsterElement monster="{monster}" />
+        {/each}
+    {/if}
 </Card>

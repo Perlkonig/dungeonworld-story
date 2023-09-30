@@ -82,7 +82,11 @@
                 {
                     "type": "monster",
                     "name": "White Walker",
-                    "tags": ["solitary", "large", "vulnerable (fire, sunlight)"],
+                    "tags": [
+                        "solitary",
+                        "large",
+                        "vulnerable (fire, sunlight)"
+                    ],
                     "description": "Bone-colored bipeds that stalk the Downs at night like the ghosts of giants. Their bellowing can be heard echoing from ridge to ravine at dusk and dawn.",
                     "instincts": [
                         "Regenerate by consuming flesh",

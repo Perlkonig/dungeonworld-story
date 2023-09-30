@@ -6,10 +6,7 @@
             "name": "Otthon (\"Home of the People\")",
             "tags": ["Human kingdom", "unsafe", "lawful", "civilized"],
             "description": "Test description.\n\nShould include multiple paragraphs.",
-            "moves": [
-                "Move 1",
-                "Move 2"
-            ],
+            "moves": ["Move 1", "Move 2"],
             "children": [
                 {
                     "type": "area",

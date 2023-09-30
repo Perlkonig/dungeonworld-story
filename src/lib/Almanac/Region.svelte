@@ -44,52 +44,49 @@
     }
 </script>
 
-<Card
-    icon="fa fa-globe"
-    title={`Region &middot; ${region.name}`}
->
+<Card icon="fa fa-globe" title="{`Region &middot; ${region.name}`}">
     <div class="content">
         <p>
-        {#each region.tags as tag}
-            <span class="tag">{tag}</span>&ensp;
-        {/each}
+            {#each region.tags as tag}
+                <span class="tag">{tag}</span>&ensp;
+            {/each}
         </p>
-    {#if region.description !== undefined}
-        <SvelteMarkdown source={region.description} />
-    {/if}
-    {#if region.moves !== undefined}
-        <h4>Moves</h4>
-        <Moves moves={region.moves} />
-    {/if}
+        {#if region.description !== undefined}
+            <SvelteMarkdown source="{region.description}" />
+        {/if}
+        {#if region.moves !== undefined}
+            <h4>Moves</h4>
+            <Moves moves="{region.moves}" />
+        {/if}
     </div>
-{#if areas.length > 0}
-    {#each areas as area}
-        <AreaElement area={area} />
-    {/each}
-{/if}
-{#if steadings.length > 0}
-    {#each steadings as steading}
-        <SteadingElement steading={steading} />
-    {/each}
-{/if}
-{#if sites.length > 0}
-    {#each sites as site}
-        <SiteElement site={site} />
-    {/each}
-{/if}
-{#if encounters.length > 0}
-    {#each encounters as encounter}
-        <EncounterElement encounter={encounter} />
-    {/each}
-{/if}
-{#if treasures.length > 0}
-    {#each treasures as treasure}
-        <TreasureElement treasure={treasure} />
-    {/each}
-{/if}
-{#if monsters.length > 0}
-    {#each monsters as monster}
-        <MonsterElement monster={monster} />
-    {/each}
-{/if}
+    {#if areas.length > 0}
+        {#each areas as area}
+            <AreaElement area="{area}" />
+        {/each}
+    {/if}
+    {#if steadings.length > 0}
+        {#each steadings as steading}
+            <SteadingElement steading="{steading}" />
+        {/each}
+    {/if}
+    {#if sites.length > 0}
+        {#each sites as site}
+            <SiteElement site="{site}" />
+        {/each}
+    {/if}
+    {#if encounters.length > 0}
+        {#each encounters as encounter}
+            <EncounterElement encounter="{encounter}" />
+        {/each}
+    {/if}
+    {#if treasures.length > 0}
+        {#each treasures as treasure}
+            <TreasureElement treasure="{treasure}" />
+        {/each}
+    {/if}
+    {#if monsters.length > 0}
+        {#each monsters as monster}
+            <MonsterElement monster="{monster}" />
+        {/each}
+    {/if}
 </Card>

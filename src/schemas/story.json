@@ -286,6 +286,10 @@
         "player": {
             "type": "object",
             "properties": {
+                "id": {
+                    "description": "A short code used to link to media",
+                    "type": "string"
+                },
                 "player": {
                     "type": "string"
                 },
@@ -309,6 +313,10 @@
         "npc": {
             "type": "object",
             "properties": {
+                "id": {
+                    "description": "A short code used to link to media",
+                    "type": "string"
+                },
                 "name": {
                     "type": "string"
                 },

@@ -45,14 +45,13 @@
         </ul>
     </div>
 
-{#if activeTab === "almanac"}
-    <Almanac almanac={story.almanac} />
-{:else if activeTab === "story"}
-    <Story story={story.story} />
-{:else if activeTab === "people"}
-    <People people={story.people} />
-{/if}
-
+    {#if activeTab === "almanac"}
+        <Almanac almanac="{story.almanac}" />
+    {:else if activeTab === "story"}
+        <Story story="{story.story}" />
+    {:else if activeTab === "people"}
+        <People people="{story.people}" />
+    {/if}
 </main>
 
 <style>
