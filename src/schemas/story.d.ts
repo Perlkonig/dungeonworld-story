@@ -12,95 +12,99 @@ export type Almanac = Region[];
  * Structure of a Dungeon World story archive
  */
 export interface DungeonWorldStory {
-    name: string;
-    people: (Player | Npc)[];
-    story?: Chapter[];
-    almanac?: Almanac;
+  name: string;
+  people: (Player | Npc)[];
+  story?: Chapter[];
+  almanac?: Almanac;
 }
 export interface Player {
-    /**
-     * A short code used to link to media
-     */
-    id?: string;
-    player: string;
-    name: string;
-    class: string;
-    level: number;
-    story?: string;
+  /**
+   * A short code used to link to media
+   */
+  id?: string;
+  player: string;
+  name: string;
+  class: string;
+  level: number;
+  story?: string;
 }
 export interface Npc {
-    /**
-     * A short code used to link to media
-     */
-    id?: string;
-    name: string;
-    tags: Tags;
-    location?: string;
-    description?: string;
+  /**
+   * A short code used to link to media
+   */
+  id?: string;
+  name: string;
+  tags: Tags;
+  location?: string;
+  description?: string;
 }
 export interface Chapter {
-    name?: string;
-    text: string;
+  name?: string;
+  text: string;
 }
 export interface Region {
-    type: "region";
-    name: string;
-    tags: Tags;
-    description?: string;
-    moves?: string[];
-    children?: (Area | Steading | Site | Encounter | Treasure | Monster)[];
+  type: "region";
+  name: string;
+  tags: Tags;
+  description?: string;
+  moves?: string[];
+  children?: (Area | Steading | Site | Encounter | Treasure | Monster)[];
 }
 export interface Area {
-    type: "area";
-    name: string;
-    tags: Tags;
-    description?: string;
-    moves?: string[];
-    children?: (Steading | Site | Encounter | Treasure | Monster)[];
+  type: "area";
+  name: string;
+  tags: Tags;
+  description?: string;
+  moves?: string[];
+  children?: (Steading | Site | Encounter | Treasure | Monster)[];
 }
 export interface Steading {
-    type: "steading";
-    name: string;
-    tags: Tags;
-    description?: string;
-    prosperity?: string;
-    population?: string;
-    defenses?: string;
-    moves?: string[];
-    children?: (Site | Encounter)[];
+  type: "steading";
+  name: string;
+  /**
+   * A short code used to link to media
+   */
+  id?: string;
+  tags: Tags;
+  description?: string;
+  prosperity?: string;
+  population?: string;
+  defenses?: string;
+  moves?: string[];
+  children?: (Site | Encounter)[];
 }
 export interface Site {
-    type: "site";
-    name: string;
-    tags: Tags;
-    description?: string;
-    moves?: string[];
-    children?: (Encounter | Treasure | Monster)[];
+  type: "site";
+  name: string;
+  tags: Tags;
+  description?: string;
+  moves?: string[];
+  children?: (Encounter | Treasure | Monster)[];
 }
 export interface Encounter {
-    type: "encounter";
-    name: string;
-    tags: Tags;
-    description?: string;
-    moves?: string[];
+  type: "encounter";
+  name: string;
+  tags: Tags;
+  description?: string;
+  moves?: string[];
 }
 export interface Treasure {
-    type: "treasure";
-    name: string;
-    tags: Tags;
-    description?: string;
-    weight?: number;
-    value?: number;
-    moves?: string[];
+  type: "treasure";
+  name: string;
+  tags: Tags;
+  description?: string;
+  weight?: number;
+  value?: number;
+  moves?: string[];
 }
 export interface Monster {
-    type: "monster";
-    name: string;
-    description?: string;
-    tags: Tags;
-    damage?: string;
-    hp?: number;
-    armor?: number;
-    instincts?: string[];
-    moves?: string[];
+  type: "monster";
+  name: string;
+  description?: string;
+  tags: Tags;
+  damage?: string;
+  hp?: number;
+  armor?: number;
+  instincts?: string[];
+  moves?: string[];
 }

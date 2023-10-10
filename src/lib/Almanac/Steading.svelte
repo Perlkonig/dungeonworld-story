@@ -16,31 +16,66 @@
             (c) => c.type === "encounter",
         ) as Encounter[];
     }
+
+    let showModal = false;
 </script>
 
 <Card icon="fa fa-home" title="{`Steading &middot; ${steading.name}`}">
-    <div class="content">
-        <p>
-            {#each steading.tags as tag}
-                <span class="tag">{tag}</span>&ensp;
-            {/each}
-        </p>
-        {#if steading.description !== undefined}
-            <SvelteMarkdown source="{steading.description}" />
+    <div class="media">
+        {#if "id" in steading && steading.id !== undefined && steading.id.length > 0}
+            <figure class="media-left" on:click="{() => (showModal = true)}">
+                <p class="image is-square">
+                    <img src="images/{steading.id}.svg" />
+                </p>
+            </figure>
+            <div class="modal{showModal ? ' is-active' : ''}">
+                <div
+                    class="modal-background"
+                    on:click="{() => (showModal = false)}"
+                ></div>
+                <div class="modal-content">
+                    <p class="image is-square">
+                        <img src="images/{steading.id}.svg" alt="" />
+                    </p>
+                </div>
+                <button
+                    class="modal-close is-large"
+                    aria-label="close"
+                    on:click="{() => (showModal = false)}"
+                ></button>
+            </div>
         {/if}
-        {#if steading.moves !== undefined}
-            <h4>Moves</h4>
-            <Moves moves="{steading.moves}" />
-        {/if}
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    {#each steading.tags as tag}
+                        <span class="tag">{tag}</span>&ensp;
+                    {/each}
+                </p>
+                {#if steading.description !== undefined}
+                    <SvelteMarkdown source="{steading.description}" />
+                {/if}
+                {#if steading.moves !== undefined}
+                    <h4>Moves</h4>
+                    <Moves moves="{steading.moves}" />
+                {/if}
+            </div>
+            {#if sites.length > 0}
+                {#each sites as site}
+                    <SiteElement site="{site}" />
+                {/each}
+            {/if}
+            {#if encounters.length > 0}
+                {#each encounters as encounter}
+                    <EncounterElement encounter="{encounter}" />
+                {/each}
+            {/if}
+        </div>
     </div>
-    {#if sites.length > 0}
-        {#each sites as site}
-            <SiteElement site="{site}" />
-        {/each}
-    {/if}
-    {#if encounters.length > 0}
-        {#each encounters as encounter}
-            <EncounterElement encounter="{encounter}" />
-        {/each}
-    {/if}
 </Card>
+
+<style>
+    .media-left {
+        width: 10%;
+    }
+</style>

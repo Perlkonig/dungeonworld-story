@@ -155,6 +155,10 @@
                 "name": {
                     "type": "string"
                 },
+                "id": {
+                    "description": "A short code used to link to media",
+                    "type": "string"
+                },
                 "tags": {
                     "$ref": "#/definitions/tags"
                 },
