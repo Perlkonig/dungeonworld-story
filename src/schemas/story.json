@@ -336,6 +336,26 @@
             },
             "required": ["name", "tags"],
             "additionalProperties": false
+        },
+        "gear": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "A short code used to link to media",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "$ref": "#/definitions/tags"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "tags"],
+            "additionalProperties": false
         }
     },
     "type": "object",
@@ -365,6 +385,21 @@
         },
         "almanac": {
             "$ref": "#/definitions/almanac"
+        },
+        "misc": {
+            "type": "object",
+            "properties": {
+                "rumors": {
+                    "type": "array",
+                    "items": "string"
+                },
+                "gear": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/gear"
+                    }
+                }
+            }
         }
     },
     "required": ["name", "people"],

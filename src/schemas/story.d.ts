@@ -16,6 +16,11 @@ export interface DungeonWorldStory {
   people: (Player | Npc)[];
   story?: Chapter[];
   almanac?: Almanac;
+  misc?: {
+    rumors?: "string"[];
+    gear?: Gear[];
+    [k: string]: unknown;
+  };
 }
 export interface Player {
   /**
@@ -107,4 +112,13 @@ export interface Monster {
   armor?: number;
   instincts?: string[];
   moves?: string[];
+}
+export interface Gear {
+  /**
+   * A short code used to link to media
+   */
+  id?: string;
+  name: string;
+  tags: Tags;
+  description?: string;
 }
